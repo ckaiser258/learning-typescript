@@ -125,6 +125,12 @@ add3(5, 10)
 add3(5)
 //Would still return 15.
 
+//Interface allows us to create custom types using objects (optional parameters can be used here as well)
+//Optional parameters here are good for user forms that have optional fields.
+interface Person {
+    firstName: string
+    lastName?: string
+}
 
 function fullName(person: {firstName: string, lastName: string}) {
     console.log(`${person.firstName} ${person.lastName}`)
@@ -135,4 +141,11 @@ let p = {
     lastName: 'Wayne'
 }
 
+//Cleaner version than above using the custom type (interface):
+
+function fullName2(person: Person) {
+    console.log(`${person.firstName} ${person.lastName}`)
+}
+
 fullName(p)
+fullName2(p)

@@ -38,9 +38,9 @@ randomValue = true;
 randomValue = "Colton";
 var myVariable = 10;
 //None of these will throw an error ahead of time since myVariable is type any:
-    // console.log(myVariable.name);
-    // myVariable();
-    // myVariable.toUppercase();
+console.log(myVariable.name);
+myVariable();
+myVariable.toUppercase();
 //'Unknown" type is similar to 'any' type. However you can't access any properties of an unkown type nor can you call or construct them ahead of time
 var myVariable2 = 10;
 //Check if 'name' property exists in object or not
@@ -53,7 +53,7 @@ if (hasName(myVariable2)) {
     console.log(myVariable2.name);
 }
 //Can use Type Assertion to let typescript know you want it to be a certain type. This would show an error without it
-    // myVariable2.toUpperCase();
+myVariable2.toUpperCase();
 //This still works, like plain javascript. Specifying variable types is optional in typescript. 
 //If you declare the variable without a value initially, it can be changed without throwing an error immediately.
 var a;
@@ -102,7 +102,6 @@ function add3(num1, num2) {
 }
 add3(5, 10);
 add3(5);
-//Would still return 15.
 function fullName(person) {
     console.log(person.firstName + " " + person.lastName);
 }
@@ -110,4 +109,9 @@ var p = {
     firstName: 'Bruce',
     lastName: 'Wayne'
 };
+//Cleaner version than above using the custom type (interface):
+function fullName2(person) {
+    console.log(person.firstName + " " + person.lastName);
+}
 fullName(p);
+fullName2(p);
