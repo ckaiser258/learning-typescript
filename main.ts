@@ -92,3 +92,23 @@ anyType = true
 //Two reasons:
 //Union types restrict to the specified types. 'Any' type doesn't have any restrictions (anyType = "hello" wouldn't throw an error)
 //Intellisense doesn't work with the 'any' type
+
+//Functions can be passed specific types and will throw an error if the function is typed with an argument of the wrong type (5, '10' wouldn't work here)
+//Also can't call the function without both arguments present
+//Can specify the return type as well (if you don't Typescript will compile it for you either way)
+//Functions have intellisense as well
+function add(num1: number, num2: number): number {
+    return num1 + num2
+}
+add(5, 10)
+
+//Optional parameters are specified with '?'
+//Can have any number of optional parameters, but they must always be after the required parameters
+function add2(num1: number, num2?: number): number {
+    if (num2)
+        return num1 + num2
+    else
+        return num1 
+}
+add2(5, 10)
+add2(5)
