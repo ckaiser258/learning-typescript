@@ -1,4 +1,17 @@
 "use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 exports.__esModule = true;
 var message = "Welcome Back";
 console.log(message);
@@ -38,9 +51,9 @@ randomValue = true;
 randomValue = "Colton";
 var myVariable = 10;
 //None of these will throw an error ahead of time since myVariable is type any:
-console.log(myVariable.name);
-myVariable();
-myVariable.toUppercase();
+// console.log(myVariable.name)
+// myVariable()
+// myVariable.toUppercase()
 //'Unknown" type is similar to 'any' type. However you can't access any properties of an unkown type nor can you call or construct them ahead of time
 var myVariable2 = 10;
 //Check if 'name' property exists in object or not
@@ -53,7 +66,7 @@ if (hasName(myVariable2)) {
     console.log(myVariable2.name);
 }
 //Can use Type Assertion to let typescript know you want it to be a certain type. This would show an error without it
-myVariable2.toUpperCase();
+// (myVariable2 as string).toUpperCase()
 //This still works, like plain javascript. Specifying variable types is optional in typescript. 
 //If you declare the variable without a value initially, it can be changed without throwing an error immediately.
 var a;
@@ -115,3 +128,34 @@ function fullName2(person) {
 }
 fullName(p);
 fullName2(p);
+//Classes:
+var Employee = /** @class */ (function () {
+    function Employee(name) {
+        this.employeeName = name;
+    }
+    Employee.prototype.greet = function () {
+        console.log("Good Morning " + this.employeeName);
+    };
+    return Employee;
+}());
+var emp1 = new Employee('Colton');
+console.log(emp1.employeeName);
+emp1.greet();
+//Classes allow for object inheritance, just like Java.
+var Manager = /** @class */ (function (_super) {
+    __extends(Manager, _super);
+    function Manager(managerName) {
+        return _super.call(this, managerName) || this;
+        //Super keyword calls base class constructor.
+        //This will call Employee and initialize managerName as the employeeName property.
+    }
+    Manager.prototype.delegateWork = function () {
+        console.log("Manager delegating tasks");
+    };
+    return Manager;
+}(Employee));
+//Now any Manager instance has access to the Employee properties as well (and they show up in the intellisense)
+var m1 = new Manager('Bruce');
+m1.delegateWork();
+m1.greet();
+console.log(m1.employeeName);

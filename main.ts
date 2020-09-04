@@ -47,9 +47,9 @@ randomValue = "Colton"
 let myVariable: any = 10
 
 //None of these will throw an error ahead of time since myVariable is type any:
-    console.log(myVariable.name)
-    myVariable()
-    myVariable.toUppercase()
+    // console.log(myVariable.name)
+    // myVariable()
+    // myVariable.toUppercase()
 
 //'Unknown" type is similar to 'any' type. However you can't access any properties of an unkown type nor can you call or construct them ahead of time
 
@@ -67,7 +67,7 @@ if (hasName(myVariable2)) {
 }
 
 //Can use Type Assertion to let typescript know you want it to be a certain type. This would show an error without it
-(myVariable2 as string).toUpperCase()
+    // (myVariable2 as string).toUpperCase()
 
 //This still works, like plain javascript. Specifying variable types is optional in typescript. 
 //If you declare the variable without a value initially, it can be changed without throwing an error immediately.
@@ -149,3 +149,38 @@ function fullName2(person: Person) {
 
 fullName(p)
 fullName2(p)
+
+//Classes:
+class Employee {
+    employeeName: string
+
+    constructor(name: string) {
+        this.employeeName = name
+    }
+
+    greet() {
+        console.log(`Good Morning ${this.employeeName}`)
+    }
+}
+
+let emp1 = new Employee('Colton')
+console.log(emp1.employeeName)
+emp1.greet()
+
+//Classes allow for object inheritance, just like Java.
+class Manager extends Employee {
+    constructor(managerName: string) {
+        super(managerName)
+        //Super keyword calls base class constructor.
+        //This will call Employee and initialize managerName as the employeeName property.
+    }
+    delegateWork() {
+        console.log(`Manager delegating tasks`)
+    }
+}
+
+//Now any Manager instance has access to the Employee properties as well (and they show up in the intellisense)
+let m1 = new Manager('Bruce')
+m1.delegateWork()
+m1.greet()
+console.log(m1.employeeName)
