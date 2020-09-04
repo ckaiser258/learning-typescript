@@ -77,3 +77,18 @@ a = true
 
 //But if you declare a variable with a value initially, typescript will automatically infer the type of value and will throw related errors afterwards.
 let b = 20 //Now b = false would throw an error
+
+//Union of types for the same variable can be done using the pipe character. 
+//This is useful when a value is not under your control. Such as an api that can send nums as strings. Or from user input.
+//Why use union of types instead of the 'any' type?
+let multiType: number | boolean;
+multiType = 20
+multiType = true
+
+//Why use union types instead of the 'any' type?
+let anyType: any
+anyType = 20
+anyType = true
+//Two reasons:
+//Union types restrict to the specified types. 'Any' type doesn't have any restrictions (anyType = "hello" wouldn't throw an error)
+//Intellisense doesn't work with the 'any' type
