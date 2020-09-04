@@ -68,3 +68,12 @@ if (hasName(myVariable2)) {
 
 //Can use Type Assertion to let typescript know you want it to be a certain type. This would show an error without it
 (myVariable2 as string).toUpperCase()
+
+//This still works, like plain javascript. Specifying variable types is optional in typescript. 
+//If you declare the variable without a value initially, it can be changed without throwing an error immediately.
+let a;
+a = 10
+a = true
+
+//But if you declare a variable with a value initially, typescript will automatically infer the type of value and will throw related errors afterwards.
+let b = 20 //Now b = false would throw an error
