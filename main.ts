@@ -50,3 +50,21 @@ let myVariable: any = 10
 console.log(myVariable.name)
 myVariable()
 myVariable.toUppercase()
+
+//'Unknown" type is similar to 'any' type. However you can't access any properties of an unkown type nor can you call or construct them ahead of time
+
+let myVariable2: unknown = 10
+
+//Check if 'name' property exists in object or not
+function hasName(obj: any): obj is {name: string} {
+    return !!obj &&
+        typeof obj === "object" &&
+        "name" in obj
+}
+
+if (hasName(myVariable2)) {
+    console.log(myVariable2.name)
+}
+
+//Can use Type Assertion to let typescript know you want it to be a certain type. This would show an error without it
+(myVariable2 as string).toUpperCase()
