@@ -154,8 +154,18 @@ var Manager = /** @class */ (function (_super) {
     };
     return Manager;
 }(Employee));
-//Now any Manager instance has access to the Employee properties as well (and they show up in the intellisense)
+//Now any Manager instance has access to the Employee properties as well (and they show up in the intellisense).
 var m1 = new Manager('Bruce');
 m1.delegateWork();
 m1.greet();
 console.log(m1.employeeName);
+//Access modifiers are keywords that set the accessability of properties from a class.
+var Employee2 = /** @class */ (function () {
+    function Employee2(name) {
+        this.employeeName = name;
+    }
+    Employee2.prototype.greet = function () {
+        console.log("Good Morning " + this.employeeName);
+    };
+    return Employee2;
+}());

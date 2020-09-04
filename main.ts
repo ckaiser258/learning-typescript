@@ -142,7 +142,6 @@ let p = {
 }
 
 //Cleaner version than above using the custom type (interface):
-
 function fullName2(person: Person) {
     console.log(`${person.firstName} ${person.lastName}`)
 }
@@ -179,8 +178,31 @@ class Manager extends Employee {
     }
 }
 
-//Now any Manager instance has access to the Employee properties as well (and they show up in the intellisense)
+//Now any Manager instance has access to the Employee properties as well (and they show up in the intellisense).
 let m1 = new Manager('Bruce')
 m1.delegateWork()
 m1.greet()
 console.log(m1.employeeName)
+
+//Access modifiers are keywords that set the accessability of properties from a class.
+class Employee2 {
+    //'Public' is default option, but can be specified if you want to be explicit.
+    public employeeName: string 
+
+    //'Private' modifier cannot be accessed from outside it's containing class. 
+    //employeeName2 would not be accessible outside the Employee2 class. 
+    //It also would not available in an object inheriting it's properties. Like our "Manager" class.
+    private employeeName2: string 
+
+    //'Protected' modifier can be accessed in an object inheriting it's properties, but not outside the classes.
+    //It's similar to private, but allows the properties to be accessed in inherited objects (like "Manager").
+    protected employeeName3: string
+
+    constructor(name: string) {
+        this.employeeName = name
+    }
+
+    greet() {
+        console.log(`Good Morning ${this.employeeName}`)
+    }
+}
