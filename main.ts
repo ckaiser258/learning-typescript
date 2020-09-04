@@ -46,10 +46,10 @@ randomValue = "Colton"
 
 let myVariable: any = 10
 
-//None of these will throw an error ahead of time since myVariable is type any
-console.log(myVariable.name)
-myVariable()
-myVariable.toUppercase()
+//None of these will throw an error ahead of time since myVariable is type any:
+    console.log(myVariable.name)
+    myVariable()
+    myVariable.toUppercase()
 
 //'Unknown" type is similar to 'any' type. However you can't access any properties of an unkown type nor can you call or construct them ahead of time
 
@@ -124,3 +124,15 @@ function add3(num1: number, num2: number = 10): number {
 add3(5, 10)
 add3(5)
 //Would still return 15.
+
+
+function fullName(person: {firstName: string, lastName: string}) {
+    console.log(`${person.firstName} ${person.lastName}`)
+}
+
+let p = {
+    firstName: 'Bruce',
+    lastName: 'Wayne'
+}
+
+fullName(p)
