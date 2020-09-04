@@ -38,3 +38,15 @@ enum Color {Red = 5, Green = 2, Blue}
 
 let c: Color = Color.Green
 console.log(c)
+
+//'Any' type can be used when unsure of what type of variable it should be, if user input type is dynamic, or if importing from a 3rd party library library
+let randomValue: any = 10
+randomValue = true
+randomValue = "Colton"
+
+let myVariable: any = 10
+
+//None of these will throw an error ahead of time since myVariable is type any
+console.log(myVariable.name)
+myVariable()
+myVariable.toUppercase()
