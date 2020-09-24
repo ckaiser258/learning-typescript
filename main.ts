@@ -210,3 +210,7 @@ class Employee2 {
 function applyFunction(f: (x: number) => number, x) {
     return f(x)
   }
+
+  function applyFunction2<T>(f: (x: T) => T, x): T {
+    return f(x)
+  }
