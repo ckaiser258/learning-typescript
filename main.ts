@@ -206,3 +206,7 @@ class Employee2 {
         console.log(`Good Morning ${this.employeeName}`)
     }
 }
+
+function applyFunction(f: (x: number) => number, x) {
+    return f(x)
+  }
